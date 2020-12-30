@@ -23,6 +23,9 @@ class CreateStudentsTable extends Migration
             $table->text('address')->nullable();
             $table->text('avatar')->nullable();
             $table->boolean('status')->default(false);
+            $table->unsignedBigInteger('dep_id');
+            $table->foreign('dep_id')->references('id')->on('departments')->cascadeOnUpdate()->cascadeOnDelete();
+
             $table->timestamps();
         });
         DB::statement("ALTER TABLE students AUTO_INCREMENT = 120200000;");

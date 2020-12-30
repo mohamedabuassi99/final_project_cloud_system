@@ -8,9 +8,8 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('student.store') }}" enctype="multipart/form-data">
                         @csrf
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -26,18 +25,48 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
+                            <label for="dob" class="col-md-4 col-form-label text-md-right">Date Of Birth</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="dob" type="date" class="form-control " name="dob" required>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="identity" class="col-md-4 col-form-label text-md-right">Identity</label>
+
+                            <div class="col-md-6">
+                                <input id="identity" type="number" class="form-control" name="identity">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" autocomplete="address">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
+
+                            <div class="col-md-6">
+                                <input id="avatar" type="file" class="form-control-file" name="avatar">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="department" class="col-md-4 col-form-label text-md-right">Department</label>
+
+                            <div class="col-md-6">
+                                <select name="dep_id" id="" class="form-control">
+                                    <option value="" disabled selected>select department</option>
+                                    @foreach($departments as $dep)
+                                    <option value="{{$dep->id}}">{{$dep->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -46,13 +75,12 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -61,13 +89,15 @@
                             </div>
                         </div>
 
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark col-md-12">
                                     {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

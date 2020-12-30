@@ -13,10 +13,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('test', function () {
+    return view('admin.index');
+})->name('admin.index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => ['role:admin']], function () {
+
+//department
+    Route::get('/admin/departments', 'DepartmentController@index')->name('department.index');
+    Route::get('/admin/department/create', 'DepartmentController@create')->name('department.create');
+    Route::post('/admin/department/store', 'DepartmentController@store')->name('department.store');
+    Route::get('/admin/department/{department}/destroy', 'DepartmentController@destroy')->name('department.destroy');
+
+//course
+    Route::get('/admin/courses', 'CourseController@index')->name('course.index');
+    Route::get('/admin/course/create', 'CourseController@create')->name('course.create');
+    Route::post('/admin/course/store', 'CourseController@store')->name('course.store');
+    Route::get('/admin/course/{course}/destroy', 'CourseController@destroy')->name('course.destroy');
+
+//student
+Route::get('/admin/students','StudentController@index')->name('student.index');
+Route::get('/admin/student/{student}/destroy','StudentController@destroy')->name('student.destroy');
+Route::get('/admin/student/{student}/approve','StudentController@approve')->name('student.approve');
+
+});
+//Student create
+Route::get('/student/create','StudentController@create')->name('student.create');
+Route::post('/student/store','StudentController@store')->name('student.store');
+
+//Route::get('/courses', 'CourseController@index')->name('course.index');
+//Route::get('/course/create', 'CourseController@create')->name('course.create');
+//Route::post('/course/store', 'CourseController@store')->name('course.store');
+//Route::get('/course/{course}/destroy', 'CourseController@destroy')->name('course.destroy');
+
