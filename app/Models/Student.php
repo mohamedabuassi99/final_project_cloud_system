@@ -10,7 +10,7 @@ class Student extends Model
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class,'registration')->withPivot('mark');
+        return $this->belongsToMany(Course::class,'registration')->withPivot(['id','mark']);
     }
 
     public function department()

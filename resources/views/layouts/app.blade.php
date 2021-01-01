@@ -32,7 +32,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav m-auto">
+
+                        @if(auth()->user() && auth()->user()->hasRole('student'))
+                        <li class="nav-item">
+                        <a href="{{route('view_course_available',auth()->user())}}" class="nav-link">Add course</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="{{route('view_my_course',auth()->user())}}" class="nav-link">view my course</a>
+                        </li>
+                            @endif
 
                     </ul>
 

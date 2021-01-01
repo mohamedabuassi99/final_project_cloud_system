@@ -6,17 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="66c82c25-736a-4b5a-89d1-b041a8220644" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Course.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Department.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Department.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Financial.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Financial.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_29_190505_create_students_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_29_190505_create_students_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -179,7 +172,11 @@
       <option name="presentableId" value="Default" />
       <updated>1609267931939</updated>
       <workItem from="1609267934010" duration="6355000" />
-      <workItem from="1609348479701" duration="18500000" />
+      <workItem from="1609348479701" duration="19374000" />
+      <workItem from="1609408546161" duration="805000" />
+      <workItem from="1609436744454" duration="5904000" />
+      <workItem from="1609497977443" duration="143000" />
+      <workItem from="1609521135732" duration="4671000" />
     </task>
     <servers />
   </component>

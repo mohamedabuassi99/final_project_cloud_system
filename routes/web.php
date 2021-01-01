@@ -52,6 +52,16 @@ Route::get('/admin/student/{student}/approve','StudentController@approve')->name
 Route::get('/student/create','StudentController@create')->name('student.create');
 Route::post('/student/store','StudentController@store')->name('student.store');
 
+Route::group(['middleware' => ['role:student']], function () {
+
+//regestration
+    Route::get('/student/{user}/available-courses','HomeController@view_course_available')->name('view_course_available');
+    Route::get('student/add-course/{course}','HomeController@register_course')->name('register_course');
+    Route::get('student/view-my-courses/{user}','HomeController@view_my_course')->name('view_my_course');
+    Route::get('student/course/{id}/delete','HomeController@delete_course')->name('delete_course');
+});
+
+
 //Route::get('/courses', 'CourseController@index')->name('course.index');
 //Route::get('/course/create', 'CourseController@create')->name('course.create');
 //Route::post('/course/store', 'CourseController@store')->name('course.store');
