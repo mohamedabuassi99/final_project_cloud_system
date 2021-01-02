@@ -42,6 +42,9 @@
                         <li class="nav-item">
                         <a href="{{route('view_my_course',auth()->user())}}" class="nav-link">view my course</a>
                         </li>
+                        <li class="nav-item">
+                        <a href="{{route('student.payment',auth()->user()->student)}}" class="nav-link">payment</a>
+                        </li>
                             @endif
 
                     </ul>
@@ -65,6 +68,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}">
+                                    Control panel
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

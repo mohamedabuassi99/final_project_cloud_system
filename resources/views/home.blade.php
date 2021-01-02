@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row ">
+
         <div class="col-md-6">
             <div class="border px-5 rounded">
             <img src="{{asset('image/avatar/'.auth()->user()->student->avatar)}}" class=" m-3 rounded" width="150" alt="">
@@ -16,9 +17,11 @@
             <div class="border px-5 py-3 mt-5 rounded">
             <p>Department:  {{auth()->user()->student->department->name}}</p>
             <p>Gpa: {{(float) $gpa}}%</p>
+            <p>Financial: {{(float) $money - $payment}} Dinar</p>
             </div>
         </div>
         <div class="col-md-6">
+
         </div>
     </div>
 </div>

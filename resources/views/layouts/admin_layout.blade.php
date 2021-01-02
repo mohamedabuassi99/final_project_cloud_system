@@ -31,7 +31,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.blade.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.index')}}">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -39,8 +39,8 @@
         </a>
 
         <!-- Divider -->
-{{--        <hr class="sidebar-divider my-0">--}}
-        <!-- Nav Item - Pages Collapse Menu -->
+    {{--        <hr class="sidebar-divider my-0">--}}
+    <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                aria-expanded="true" aria-controls="collapseOne">
@@ -49,14 +49,14 @@
             </a>
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-{{--                    <h6 class="collapse-header">Department</h6>--}}
+                    {{--                    <h6 class="collapse-header">Department</h6>--}}
                     <a class="collapse-item" href="{{route('department.create')}}">Add department</a>
                     <a class="collapse-item" href="{{route('department.index')}}">All department</a>
                 </div>
             </div>
         </li>
 
-  <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-book"></i>
@@ -64,7 +64,7 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-{{--                    <h6 class="collapse-header">Department</h6>--}}
+                    {{--                    <h6 class="collapse-header">Department</h6>--}}
                     <a class="collapse-item" href="{{route('course.create')}}">Add Course</a>
                     <a class="collapse-item" href="{{route('course.index')}}">All Courses</a>
                 </div>
@@ -219,7 +219,8 @@
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
+                                        problem I've been having.
+                                    </div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
@@ -231,7 +232,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you?
+                                    </div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
@@ -243,7 +245,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
+                                        the progress so far, keep up the good work!
+                                    </div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
@@ -255,7 +258,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                        told me that people say this to all dogs, even if they aren't good...
+                                    </div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -302,7 +306,7 @@
             <!-- End of Topbar -->
 
 
-    @yield('content')
+            @yield('content')
 
         </div>
 

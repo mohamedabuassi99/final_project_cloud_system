@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,16 +27,27 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $user = auth()->user();
-//        dd($user->student->courses);
-        $all_marks =0;
-        $course_number = $user->student->courses->count();
-        foreach($user->student->courses as $my_course){
-            $all_marks += $my_course->pivot->mark;
+        $money = 0;
+        foreach ($user->student->courses as $data) {
+            $money += $data->hours * $data->department->hour_price;
+        }
+        $payment = 0;
+        foreach ($user->student->payments as $pay) {
+            $payment += $pay->payment;
+        }
+        $all_marks = 0;
+        $course_number = 0;
+        foreach ($user->student->courses as $my_course) {
+            $course_number += $my_course->hours;
+            if ($my_course->pivot->mark != 0) {
+                $all_marks += $my_course->pivot->mark * $my_course->hours;
+            }
         }
         $gpa = $all_marks / $course_number;
 
-        return view('home',compact('gpa'));
+        return view('home', compact('gpa', 'money', 'payment'));
     }
 
 
@@ -66,13 +78,13 @@ class HomeController extends Controller
 
     public function view_my_course(User $user)
     {
-            return view('registration.view_my_course',compact('user'));
+        return view('registration.view_my_course', compact('user'));
     }
 
     public function delete_course($id)
     {
         DB::table('registration')->delete($id);
-        return back()->with('success','course deleted successfully');
+        return back()->with('success', 'course deleted successfully');
     }
 
 }

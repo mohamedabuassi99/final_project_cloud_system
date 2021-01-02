@@ -15,20 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('test', function () {
-    return view('admin.index');
-})->name('admin.index');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role:admin']], function () {
+
+//admin dashboard
+    Route::get('/admin','DashboardController@index')->name('admin.index');
+
+//admin manege student
+    Route::get('/admin/course/{course}/students','DashboardController@view_student')->name('course.manege');
+    Route::post('/admin/course/{course}/student/{student}','DashboardController@put_mark')->name('admin.put_mark');
+
 
 //department
     Route::get('/admin/departments', 'DepartmentController@index')->name('department.index');
@@ -43,22 +43,27 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/course/{course}/destroy', 'CourseController@destroy')->name('course.destroy');
 
 //student
-Route::get('/admin/students','StudentController@index')->name('student.index');
-Route::get('/admin/student/{student}/destroy','StudentController@destroy')->name('student.destroy');
-Route::get('/admin/student/{student}/approve','StudentController@approve')->name('student.approve');
+    Route::get('/admin/students','StudentController@index')->name('student.index');
+    Route::get('/admin/student/{student}/destroy','StudentController@destroy')->name('student.destroy');
+    Route::get('/admin/student/{student}/approve','StudentController@approve')->name('student.approve');
 
 });
 //Student create
-Route::get('/student/create','StudentController@create')->name('student.create');
-Route::post('/student/store','StudentController@store')->name('student.store');
+    Route::get('/student/create','StudentController@create')->name('student.create');
+    Route::post('/student/store','StudentController@store')->name('student.store');
 
 Route::group(['middleware' => ['role:student']], function () {
 
-//regestration
+//registration
     Route::get('/student/{user}/available-courses','HomeController@view_course_available')->name('view_course_available');
     Route::get('student/add-course/{course}','HomeController@register_course')->name('register_course');
     Route::get('student/view-my-courses/{user}','HomeController@view_my_course')->name('view_my_course');
     Route::get('student/course/{id}/delete','HomeController@delete_course')->name('delete_course');
+
+//payments
+    Route::get('/student/payments/{student}','PayController@my_payment')->name('student.payment');
+    Route::get('/student/pay/{student}','PayController@pay')->name('student.pay');
+//    Route::post('/student/payment/{student}','PayController@payment')->name('student.payment');
 });
 
 
