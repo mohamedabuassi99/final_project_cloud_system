@@ -14,13 +14,13 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('admin.student.index',compact('students'));
+        return view('admin.student.index', compact('students'));
     }
 
     public function create()
     {
         $departments = Department::all();
-        return view('auth.register',compact('departments'));
+        return view('auth.register', compact('departments'));
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class StudentController extends Controller
 
         if ($request->has('avatar')) {
             $image = $request->file('avatar');
-            $filename = time() .'_'.$request->name. '.' . $image->extension();
+            $filename = time() . '_' . $request->name . '.' . $image->extension();
             $image->move(public_path('image/avatar'), $filename);
             $request->avatar = $filename;
         }
@@ -48,23 +48,44 @@ class StudentController extends Controller
             'avatar' => @$request->avatar,
             'dep_id' => $request->dep_id,
         ]);
-    return redirect('/login');
+        return redirect('/login');
     }
 
     public function destroy(Student $student)
     {
-        $image_path = '/image/avatar/'.$student->avatar;
+
+        $image_path = '/image/avatar/' . $student->avatar;
         if (File::exists(public_path($image_path))) {
             File::delete(public_path($image_path));
         }
-        $student->delete();
-        return back()->with('delete_student','Student deleted Successfully');
+        $user = User::where('id', $student->user_id)->delete();
+        return back()->with('delete_student', 'Student deleted Successfully');
     }
 
     public function approve(Student $student)
     {
-        $student->update(['status'=> 1]);
-        return back()->with('approve_student','Approved student successfully');
+        $student->update(['status' => 1]);
+        return back()->with('approve_student', 'Approved student successfully');
+    }
+
+    public function report(Student $student)
+    {
+
+        $all_marks = 0;
+        $hours = 0;
+        foreach ($student->courses as $my_course) {
+            $hours += $my_course->hours;
+            if ($my_course->pivot->mark != 0) {
+                $all_marks += $my_course->pivot->mark * $my_course->hours;
+            }
+        }
+        $gpa = 0;
+        if ($hours > 0) {
+            $gpa = $all_marks / $hours;
+        }
+
+
+        return view('reports.report',compact('student','gpa'));
     }
 
 }

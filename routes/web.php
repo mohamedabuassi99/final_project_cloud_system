@@ -17,9 +17,12 @@ Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
+
+});
 Route::group(['middleware' => ['role:admin']], function () {
 
 //admin dashboard
@@ -46,6 +49,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/students','StudentController@index')->name('student.index');
     Route::get('/admin/student/{student}/destroy','StudentController@destroy')->name('student.destroy');
     Route::get('/admin/student/{student}/approve','StudentController@approve')->name('student.approve');
+    Route::get('/admin/student/{student}/report','StudentController@report')->name('student.report');
 
 });
 //Student create

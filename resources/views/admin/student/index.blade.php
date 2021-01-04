@@ -15,7 +15,13 @@
                             {{Session::get('approve_student')}}
                         </div>
                     @endif
-                    <table class="table table-light col-md-12 text-center">
+
+                    <div class="m-auto">
+
+                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+
+                    </div>
+                    <table class="table table-light col-md-12 text-center" >
                         <thead>
                         <tr>
                             <th>#</th>
@@ -30,7 +36,7 @@
                             <th>action</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
                         @foreach($students as $student)
                             <tr>
                                 <td>{{$loop->index + 1}}</td>
@@ -54,6 +60,7 @@
 
                                 </td>
                                 <td>
+                                    <a href="{{route('student.report',$student)}}" class="btn btn-info" target="_blank">all Data </a>
                                     <a href="{{route('student.destroy',$student)}}" class="btn btn-danger">delete</a>
                                     @if($student->status == 0)
                                         <a href="{{route('student.approve',$student)}}"

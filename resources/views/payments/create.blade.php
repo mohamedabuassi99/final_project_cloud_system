@@ -11,10 +11,11 @@
                     <form action="{{route('student.pay',$student)}}" class="">
                         @csrf
                         <div class="form-group">
-                            <label for="">payment</label>
+                            <label for="">Payment </label>
                             <input type="number" name="payment" class="form-control col-md-6">
+
                         </div>
-                        <input type="submit" class="btn btn-success" value="Pay">
+                        <input type="submit" class="btn btn-success col-md-6 mb-5" value="Pay">
                     </form>
 
                     <table class="table table-dark text-center">
@@ -27,11 +28,11 @@
                         </thead>
                         <tbody>
                         @foreach($student->payments as $data)
-                        <tr>
-                            <td>{{$loop->index+1}}</td>
-                            <td>{{$data->payment}} Dinar</td>
-                            <td>{{$data->created_at}}</td>
-                        </tr>
+                            <tr>
+                                <td>{{$loop->index+1}}</td>
+                                <td>{{$data->payment}} Dinar</td>
+                                <td>{{$data->created_at}}</td>
+                            </tr>
                         @endforeach
 
                         </tbody>

@@ -17,6 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('auth');
     }
 
@@ -25,9 +26,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
     public function index()
     {
-
+        if (auth()->user()->roles[0]->name == 'admin') {
+            return redirect('admin');
+        }
         $user = auth()->user();
         $money = 0;
         foreach ($user->student->courses as $data) {
@@ -45,8 +50,10 @@ class HomeController extends Controller
                 $all_marks += $my_course->pivot->mark * $my_course->hours;
             }
         }
-        $gpa = $all_marks / $course_number;
-
+        $gpa = 0;
+        if ($course_number > 0) {
+            $gpa = $all_marks / $course_number;
+        }
         return view('home', compact('gpa', 'money', 'payment'));
     }
 
