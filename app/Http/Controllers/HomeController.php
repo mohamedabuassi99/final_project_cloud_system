@@ -33,6 +33,11 @@ class HomeController extends Controller
         if (auth()->user()->roles[0]->name == 'admin') {
             return redirect('admin');
         }
+
+        if(auth()->user()->student->status == 0){
+            return redirect()->route('logout');
+        }
+
         $user = auth()->user();
         $money = 0;
         foreach ($user->student->courses as $data) {
@@ -45,9 +50,10 @@ class HomeController extends Controller
         $all_marks = 0;
         $course_number = 0;
         foreach ($user->student->courses as $my_course) {
-            $course_number += $my_course->hours;
-            if ($my_course->pivot->mark != 0) {
+
+            if ($my_course->pivot->mark > 0) {
                 $all_marks += $my_course->pivot->mark * $my_course->hours;
+                $course_number += $my_course->hours;
             }
         }
         $gpa = 0;

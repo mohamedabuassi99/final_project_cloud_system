@@ -32,7 +32,7 @@
                                 <td>{{$course->department->name}}</td>
                                 <td>{{$course->students->count()}}</td>
                                 <td>
-                                    <a href="{{route('course.manege',$course)}}" class="btn btn-info">manege student</a>
+                                    <a href="{{route('course.manege',$course)}}" class="btn btn-info">manage student</a>
                                     <a href="{{route('course.destroy',$course)}}" class="btn btn-danger">delete</a>
                                 </td>
                             </tr>

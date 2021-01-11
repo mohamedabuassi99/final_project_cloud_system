@@ -82,7 +82,7 @@
             </div>
             <hr>
             <div>
-                <h2 class="text-center">Financial</h2>
+                <h2 class="text-center">Amount</h2>
                 <h4 class="text-center">{{$student->payments->sum('payment') - $student->courses->sum('hours') * $student->department->hour_price}} Dinar</h4>
             </div>
         </div>

@@ -49,7 +49,6 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/students','StudentController@index')->name('student.index');
     Route::get('/admin/student/{student}/destroy','StudentController@destroy')->name('student.destroy');
     Route::get('/admin/student/{student}/approve','StudentController@approve')->name('student.approve');
-    Route::get('/admin/student/{student}/report','StudentController@report')->name('student.report');
 
 });
 //Student create
@@ -75,4 +74,5 @@ Route::group(['middleware' => ['role:student']], function () {
 //Route::get('/course/create', 'CourseController@create')->name('course.create');
 //Route::post('/course/store', 'CourseController@store')->name('course.store');
 //Route::get('/course/{course}/destroy', 'CourseController@destroy')->name('course.destroy');
+Route::get('/admin/student/{student}/report','StudentController@report')->name('student.report');
 

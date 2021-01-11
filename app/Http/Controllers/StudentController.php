@@ -74,8 +74,8 @@ class StudentController extends Controller
         $all_marks = 0;
         $hours = 0;
         foreach ($student->courses as $my_course) {
-            $hours += $my_course->hours;
             if ($my_course->pivot->mark != 0) {
+                $hours += $my_course->hours;
                 $all_marks += $my_course->pivot->mark * $my_course->hours;
             }
         }
